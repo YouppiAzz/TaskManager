@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do list</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body style="background-image:url(../static/images.png);">
+    <div class="todo">
+        <h1 class="title">
+            TaskManager
+        </h1>
+    </div>
+    <div class="submit">
+        <form  method="post" class="post">
+            <label for="task">Task:</label>
+            <input type="text" class="input" name="task" required>
+            <button type="submit" class="submitBt">Add Task</button>
+        </form>
+    </div>
+    {% for index,task in Tasks %}
+    <div class="TaskField">
+        <span class="span">
+            {{task}}
+        </span>
+        <form class="#" method="post">
+            <input type="hidden" name="index" value="{{index}}">
+            <button type="submit" name="action" value="done" class="done">
+               done
+            </button>
+            <button type="submit" name="action" value="delete" class="delete">
+               delete
+            </button>
+        </form>
+    </div>
+    {%endfor%}
+    {% for taskD in DoneTasks %}
+    <div class="DoneTasks">
+        <span class="gray"> {{taskD}} </span>
+    </div>
+    {% endfor %}
+</body>
+</html>
